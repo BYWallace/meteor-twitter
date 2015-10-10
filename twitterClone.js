@@ -44,6 +44,10 @@ if (Meteor.isClient) {
           alert(error);
         }
       });
+    },
+
+    'click #logout': function() {
+      Meteor.logout();
     }
   });
 
