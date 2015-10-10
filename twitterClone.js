@@ -67,7 +67,7 @@ if (Meteor.isClient) {
     },
 
     disableButton: function() {
-      if (Session.get('numChars') <= 0 || Session.get('numChars') > 140) {
+      if (Session.get('numChars') <= 0 || Session.get('numChars') > 140 || !Meteor.user()) {
         return 'disabled';
       }
     }
