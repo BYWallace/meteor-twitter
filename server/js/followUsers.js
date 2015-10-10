@@ -5,5 +5,12 @@ Meteor.methods({
     }, {
       fields: { 'username': 1}
     });
+  },
+
+  'followUser': function(username) {
+    Relationships.insert({
+      follower: Meteor.user().username,
+      following: username
+    });
   }
 });

@@ -1,3 +1,9 @@
+Template.followUsers.helpers({
+  'foundUser': function() {
+    return Session.get('foundUser');
+  }
+});
+
 Template.followUsers.events({
   'submit form': function(event) {
     var searchUser = event.target.searchUser.value();
@@ -7,5 +13,9 @@ Template.followUsers.events({
       }
     });
     return false;
+  },
+
+  'click #follow': function() {
+    Meteor.call('followUser', Session.get('foundUser').username);
   }
 });
