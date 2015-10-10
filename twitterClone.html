@@ -3,7 +3,10 @@
 </head>
 
 <body>
-  {{> tweetBox}}
+  <div class="row">
+    <div class="col-md-4 col-sm-4">{{> userManagement}}</div>
+    <div class="col-md-8 col-sm-8">{{> tweetBox}}</div>
+  </div>
 </body>
 
 <template name="tweetBox">
@@ -16,6 +19,41 @@
           <strong class="{{charClass}}">{{charCount}}</strong>
           <button class="btn btn-info pull-right" type="button" {{disableButton}}>Tweet</button>
         </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="userManagement">
+  <div class="user-container">
+    <div class="panel panel-default userBox">
+      <div class="panel-body">
+        {{# if currentUser}}
+        <!-- Message for logged in user -->
+        <p>Hello <strong>@{{currentUser.username}}</strong>, welcome to twitterClone</p>
+
+        {{else}}
+        <!-- Log in module -->
+        <h4>Already have an account?</h4>
+        <div class="form-group">
+          <input class="form-control input-sm" id="login-username" placeholder="Username">
+          <input class="form-control input-sm" id="login-password" placeholder="Password" type="password">
+        </div>
+
+        <button type="button" class="btn btn-info fullbutton login" id="login">Log in</button>
+
+
+        <!-- Sign up module -->
+        <h4>New User?</h4>
+        <div class="form-group">
+          <input class="form-control input-sm" id="signup-username" placeholder="Username">
+          <input class="form-control input-sm" id="signup-fullname" placeholder="Full Name (Optional)">
+          <input class="form-control input-sm" id="signup-password" placeholder="Password" type="password">
+        </div>
+
+        <button type="button" class="btn btn-info fullbutton" id="signup">Sign up</button>
+        {{/if}}
+
       </div>
     </div>
   </div>
