@@ -11,9 +11,7 @@ Template.tweetBox.events({
     var tweet = $('#tweetText').val();
     $('#tweetText').val('');
     Session.set('numChars', 0);
-    if (Meteor.user()) {
-      Tweets.insert({message: tweet, user: Meteor.user().username});
-    }
+    Meteor.call('insertTweet', tweet);
   }
 });
 
