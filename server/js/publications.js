@@ -4,5 +4,7 @@ Meteor.publish('tweets', function() {
     var currentFollowings = UserUtils.findFollowings(username);
 
     return Tweets.find({user: { $in: currentFollowings }});
+  } else {
+    return Tweets.find();
   }
 });
