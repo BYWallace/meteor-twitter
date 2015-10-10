@@ -14,7 +14,9 @@ if (Meteor.isClient) {
       var tweet = $('#tweetText').val();
       $('#tweetText').val('');
       Session.set('numChars', 0);
-      Tweets.insert({message: tweet});
+      if (Meteor.user()) {
+        Tweets.insert({message: tweet, user: Meteor.user().username});
+      }
     }
   });
 
